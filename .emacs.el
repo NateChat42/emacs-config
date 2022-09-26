@@ -1,8 +1,8 @@
-(require 'package)
+(require 'package) ;; NOTE: try https if M-x package-install doesn't work, or try M-x package-refresh-contents. It might take some time, but be patient
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")
-	("melpa" . "https://melpa.org/packages/")
+	("melpa" . "http://melpa.org/packages/")
         ("org" . "http://orgmode.org/elpa/")
         ("melpa-stable" . "http://stable.melpa.org/packages/")))
 (package-initialize)
@@ -430,6 +430,12 @@ _._ Scroll→
 (use-package yaml-mode
   :ensure t)
 
+(use-package typescript-mode
+  :ensure t)
+
+(use-package vue-mode
+  :ensure t)
+
 (use-package yasnippet
   :ensure t
   :config
@@ -476,7 +482,7 @@ _._ Scroll→
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(typescript-mode yaml-mode uuidgen helm-company web-mode company-quickhelp which-key wgrep-helm wgrep undo-tree cider clojure-snippets yasnippet spacemacs-theme rainbow-identifiers rainbow-delimiters rainbow-mode helm-projectile projectile smartparens pos-tip magit ivy helm-descbinds helm dired-narrow dired-subtree dired-filter company clojure-mode-extra-font-locking flycheck-clj-kondo flycheck-joker clojure-mode cider-hydra anzu ace-jump-zap ace-isearch ace-jump-mode ace-popup-menu use-package)))
+   '(vue-mode typescript-mode yaml-mode uuidgen helm-company web-mode company-quickhelp which-key wgrep-helm wgrep undo-tree cider clojure-snippets yasnippet spacemacs-theme rainbow-identifiers rainbow-delimiters rainbow-mode helm-projectile projectile smartparens pos-tip magit ivy helm-descbinds helm dired-narrow dired-subtree dired-filter company clojure-mode-extra-font-locking flycheck-clj-kondo flycheck-joker clojure-mode cider-hydra anzu ace-jump-zap ace-isearch ace-jump-mode ace-popup-menu use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

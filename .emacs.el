@@ -377,6 +377,36 @@ _._ Scroll→
   (projectile-global-mode)
   (setq projectile-completion-system 'helm
         projectile-switch-project-action 'helm-projectile)
+  (setq projectile-globally-ignored-directories
+        (cl-union projectile-globally-ignored-directories
+                  '(".git"
+                    ".cljs_rhino_repl"
+                    ".cpcache"
+                    ".meghanada"
+                    ".shadow-cljs"
+                    ".svn"
+                    "cljs-runtime"
+                    "node_modules"
+                    "out"
+                    "repl"
+                    "resources/public/js/compiled"
+                    "target"
+                    "venv")))
+  (setq projectile-globally-ignored-files
+        (cl-union projectile-globally-ignored-files
+                  '(".DS_Store"
+                    ".lein-repl-history"
+                    "*.gz"
+                    "*.pyc"
+                    "*.png"
+                    "*.jpg"
+                    "*.jar"
+                    "*.js"
+                    "*.retry"
+                    "*.svg"
+                    "*.tar.gz"
+                    "*.tgz"
+                    "*.zip")))
   (define-key projectile-command-map (kbd "s g") 'helm-projectile-grep))
 
 (use-package rainbow-mode

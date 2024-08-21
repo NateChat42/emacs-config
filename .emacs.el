@@ -15,6 +15,10 @@
 
 (setq byte-compile-warnings '(cl-functions))
 
+
+;; Prevent undo tree files from polluting your git repo
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
 (setq visible-bell t)
 ;; store back-up files in a temporary directory instead of leaving emacs-droppings
 (setq temporary-file-directory "~/.emacs.d/temporary_files")
@@ -42,6 +46,10 @@
 (global-set-key (kbd "C-x C-d") 'dired) ;; so dired is both C-x C-d and C-x d
 (global-set-key (kbd "C-x C-q") 'view-mode) ;; view mode
 (global-set-key (kbd "M-C-;") 'comment-box)
+(global-set-key (kbd "C-x M-w") 'windmove-swap-states-up)    ;; moves current buffer one up
+(global-set-key (kbd "C-x M-a") 'windmove-swap-states-left)  ;; moves current buffer one left
+(global-set-key (kbd "C-x M-s") 'windmove-swap-states-down)  ;; moves current buffer one down
+(global-set-key (kbd "C-x M-d") 'windmove-swap-states-right) ;; moves current buffer one right
 (global-linum-mode 1) ;; always show line numbers
 (menu-bar-mode -1) ;; turn off menu
 (tool-bar-mode -1) ;; turn off toolbar
@@ -396,6 +404,7 @@ _._ Scroll→
         (cl-union projectile-globally-ignored-files
                   '(".DS_Store"
                     ".lein-repl-history"
+		    "*.css"
                     "*.gz"
                     "*.pyc"
                     "*.png"
@@ -504,6 +513,8 @@ _._ Scroll→
   :config
   (which-key-mode))
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; Add this line if you want to start in a particular file every time you start
 ;; (find-file "~/workspace/Clojure/myproject/project.clj")
 (custom-set-variables
@@ -512,7 +523,8 @@ _._ Scroll→
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(vue-mode typescript-mode yaml-mode uuidgen helm-company web-mode company-quickhelp which-key wgrep-helm wgrep undo-tree cider clojure-snippets yasnippet spacemacs-theme rainbow-identifiers rainbow-delimiters rainbow-mode helm-projectile projectile smartparens pos-tip magit ivy helm-descbinds helm dired-narrow dired-subtree dired-filter company clojure-mode-extra-font-locking flycheck-clj-kondo flycheck-joker clojure-mode cider-hydra anzu ace-jump-zap ace-isearch ace-jump-mode ace-popup-menu use-package)))
+   '(vue-mode typescript-mode yaml-mode uuidgen helm-company web-mode company-quickhelp which-key wgrep-helm wgrep undo-tree cider clojure-snippets yasnippet spacemacs-theme rainbow-identifiers rainbow-delimiters rainbow-mode helm-projectile projectile smartparens pos-tip magit ivy helm-descbinds helm dired-narrow dired-subtree dired-filter company clojure-mode-extra-font-locking flycheck-clj-kondo flycheck-joker clojure-mode cider-hydra anzu ace-jump-zap ace-isearch ace-jump-mode ace-popup-menu use-package))
+ '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
